@@ -48,26 +48,26 @@
 </head>
 <body>
     <h1>SOX Branches - User Flow</h1>
-    <p class="subtitle">Kompletní workflow pro schvalování a mergování branches</p>
+    <p class="subtitle">Complete workflow for branch approval and merging</p>
 
     <div class="diagram-container">
         <pre class="mermaid">
 flowchart TD
     %% ===== ORG ADMIN CONFIGURATION =====
-    subgraph ORG_ADMIN_CONFIG["Konfigurace projektu — pouze Org Admin"]
+    subgraph ORG_ADMIN_CONFIG["Project Configuration — Org Admin only"]
         ADMIN(["Org Admin"])
-        ADMIN --> ADMIN_APPROVALS["Nastavení: počet required approvals\n(0 nebo 2+)"]
-        ADMIN_APPROVALS -->|"1+"| ADMIN_REVIEWERS["Nastavení: kdo jsou revieweři\n(projektová skupina / custom)"]
+        ADMIN --> ADMIN_APPROVALS["Settings: number of required approvals\n(0 or 2+)"]
+        ADMIN_APPROVALS -->|"1+"| ADMIN_REVIEWERS["Settings: who are reviewers\n(project group / custom)"]
     end
 
     ADMIN_APPROVALS -->|"0"| START
     ADMIN_REVIEWERS --> START
 
     %% ===== ROLES =====
-    subgraph ROLES_CONFIG["Role a přístup"]
-        ROLE_ADMIN["Admin\nProdukce + Branch"]
-        ROLE_SHARED["Shared\nProdukce + Branch"]
-        ROLE_GUEST["Guest\npouze Branch"]
+    subgraph ROLES_CONFIG["Roles & Access"]
+        ROLE_ADMIN["Admin\nProduction + Branch"]
+        ROLE_SHARED["Shared\nProduction + Branch"]
+        ROLE_GUEST["Guest\nBranch only"]
     end
 
     ROLE_ADMIN --> START
